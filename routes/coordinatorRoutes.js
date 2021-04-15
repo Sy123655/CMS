@@ -18,7 +18,8 @@ router.route('/')
 
 /* Coordinator Get upload ROUTES */
 
-
+router.route('/upload')
+    .get(coordinatorController.getUploads);
 
 
 module.exports = router;
