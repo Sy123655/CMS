@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
-const {isUserAuthenticated} = require("../config/customFunctions");
 
 
-router.all('/*', isUserAuthenticated, (req, res, next) => {
+
+router.all('/*',  (req, res, next) => {
 
     req.app.locals.layout = 'admin';
 
@@ -53,18 +53,9 @@ router.route('/category/edit/:id')
     .post(adminController.submitEditCategoriesPage);
 
 
-/* ADMIN COMMENT ROUTES */
-
-
-router.route('/upload')
-    .get(adminController.getUploads);
 
 
 
-/*sadasdas*/
-
-router.route('/comment')
-    .get(adminController.getComments);
 
 
 

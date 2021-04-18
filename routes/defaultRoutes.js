@@ -71,7 +71,7 @@ router.route('/login')
     .post(
 
     passport.authenticate('local', {
-    successRedirect: '/admin',
+    successRedirect: '/user',
     failureRedirect: '/login',
     failureFlash: true,
     successFlash: true,
@@ -84,17 +84,17 @@ router.route('/login')
 
 
 
-// router.route('/loginmanager')
-// .get(defaultController.loginGetManager)
-// .post(
-//     passport.authenticate('local', {
-//     successRedirect: '/manager',
-//     failureRedirect: '/loginmanager',
-//     failureFlash: true,
-//     successFlash: true,
-//     session: true
-// }), 
-// defaultController.loginPostManager);
+router.route('/loginmanager')
+.get(defaultController.loginGetManager)
+.post(defaultController.loginPostManager);
+
+router.route('/loginadmin')
+.get(defaultController.loginGetAdmin)
+.post(defaultController.loginPostAdmin);
+
+router.route('/logincoordinator')
+.get(defaultController.loginGetCoordinator)
+.post(defaultController.loginPostCoordinator);
 
 // noinspection JSCheckFunctionSignatures
 
@@ -102,9 +102,17 @@ router.route('/register')
     .get(defaultController.registerGet)
     .post(defaultController.registerPost);
 
-    router.route('/registermanager')
-    .get(defaultController.registerGetManager)
-    .post(defaultController.registerPostManager);
+// router.route('/registermanager')
+//     .get(defaultController.registerGetManager)
+//     .post(defaultController.registerPostManager);
+
+// router.route('/registeradmin')
+//     .get(defaultController.registerGetAdmin)
+//     .post(defaultController.registerPostAdmin);
+
+//     router.route('/registercoordinator')
+//     .get(defaultController.registerGetCoordinator)
+//     .post(defaultController.registerPostCoordinator);
 
 
 router.route('/post/:id')

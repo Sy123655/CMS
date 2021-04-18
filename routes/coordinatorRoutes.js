@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const coordinatorController = require('../controllers/coordinatorController');
-const {isUserAuthenticated} = require("../config/customFunctions");
 
 
-router.all('/*', isUserAuthenticated, (req, res, next) => {
+
+router.all('/*', (req, res, next) => {
 
     req.app.locals.layout = 'coordinator';
 
@@ -21,6 +21,13 @@ router.route('/')
 router.route('/upload')
     .get(coordinatorController.getUploads);
 
+
+/*sadasdas*/
+
+
+    
+router.route('/upload/:id')
+    .get(coordinatorController.getSingleUpload);
 
 module.exports = router;
 

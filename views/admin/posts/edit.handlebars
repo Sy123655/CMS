@@ -33,12 +33,7 @@
 
 
 
-                <div class="form-check ml-3">
-                    <label for="allowComments">
-                        <input type="checkbox" class="form-check-input" id="allowComments" name="allowComments" >
-                        Allow Comments
-                    </label>
-                </div>
+                
 
                 <div class="form-group">
                     <label for="description">Content</label>
@@ -46,8 +41,12 @@
                 </div>
 
                  <div class="form-group">
-                    <label for="deadline">Deadline</label>
-                    <input name="deadline" id="deadline" type="date" placeholder="Enter your deadline here">
+                    <label for="deadline">Deadline first</label>
+                    <input name="deadlinefirst" id="deadline" type="date" placeholder="Enter your deadline here">
+                </div>
+                <div class="form-group">
+                    <label for="deadline">Deadline last</label>
+                    <input name="deadlinelast" id="deadline" type="date" placeholder="Enter your deadline here">
                 </div>
 
                 <button class="btn btn-outline-warning btn-lg" type="submit">Update Post</button>

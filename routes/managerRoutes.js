@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const managerController = require('../controllers/managerController');
-const {isUserAuthenticated} = require("../config/customFunctions");
 var zip = require('express-easy-zip');
 router.use(zip());
 
 
-router.all('/*', isUserAuthenticated, (req, res, next) => {
+router.all('/*', (req, res, next) => {
 
     req.app.locals.layout = 'manager';
 

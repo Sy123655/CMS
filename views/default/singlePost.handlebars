@@ -117,16 +117,17 @@
                 <hr>
                 <h5 class="card-header">Upload file</h5>
                 <div class="card-body">
- 
-            <hr>
+
             <!-- Date/Time -->
             <p>Posted on {{post.creationDate}}</p>
 
             <hr>
 
             <!-- deadline -->
-           <p>Deadline on {{post.deadline}}</p>
+           <p>Deadline first on {{post.deadlinefirst}}</p>
 
+           <p>Deadline last on {{post.deadlinelast}}</p>
+            <hr>
             <!-- Post Content -->
             <p class="lead">{{post.description}}</p>
 
@@ -148,7 +149,7 @@
                 </div>
             </div>
 
-           
+
 
     {{!-- <div class="card my-4">
                 <h5 class="card-header">Leave a Comment:</h5>

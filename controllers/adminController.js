@@ -68,7 +68,7 @@ module.exports = {
                 post.status = req.body.status;
                 post.description = req.body.description;
                 post.category = req.body.category;
-                post.deadlinefirst = req.body.deadlinefist;
+                post.deadlinefirst = req.body.deadlinefirst;
                 post.deadlinelast = req.body.deadlinelast;
 
                 post.save().then(updatePost => {
@@ -144,22 +144,8 @@ module.exports = {
 
     /* upload ROUTE SECTION*/
    
-    getUploads: (req, res) => {
-        Upload.find()
-            .populate('user')
-            .then(uploads => {
-                res.render('admin/uploads/index', {uploads: uploads});
-            })
-    },
-    //Comment route section
-    /* COMMENT ROUTE SECTION*/
-    getComments: (req, res) => {
-        Comment.find()
-            .populate('user')
-            .then(comments => {
-                res.render('admin/comments/index', {comments: comments});
-            })
-    },
+
+    
 
 
     

@@ -74,13 +74,15 @@ const defaultRoutes = require('./routes/defaultRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const managerRoutes = require('./routes/managerRoutes');
 const coordinatorRoutes = require('./routes/coordinatorRoutes');
-// const defaultmanager = require('./routes/defaultmanager');
+const userRoutes = require('./routes/userRoutes');
+
 
 app.use('/', defaultRoutes);
 app.use('/admin', adminRoutes);
 app.use('/manager',managerRoutes);
 app.use('/coordinator',coordinatorRoutes);
-// app.use('/defaulmanager',defaultmanager);
+app.use('/user',userRoutes);
+
 
 
 

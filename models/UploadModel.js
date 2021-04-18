@@ -18,10 +18,10 @@ const UploadSchema = new Schema({
         default: Date.now()
     },
     
-    // commentIsApproved: {
-    //     type: Boolean,
-    //     default: false
-    // },
+    comment: {
+        type: Schema.Types.ObjectId,
+        ref: 'comment'
+    }
     
 
 
