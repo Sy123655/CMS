@@ -14,7 +14,7 @@ const fileUpload = require('express-fileupload');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const cookieSession = require("cookie-session");
-const Manager = require('./models/ManagerModel').Manager;
+
 
 
 const app = express();

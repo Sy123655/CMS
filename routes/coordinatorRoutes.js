@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const coordinatorController = require('../controllers/coordinatorController');
+const {isUserAuthenticated} = require("../config/customFunctions");
 
 
-
-router.all('/*', (req, res, next) => {
+router.all('/*', isUserAuthenticated, (req, res, next) => {
 
     req.app.locals.layout = 'coordinator';
 

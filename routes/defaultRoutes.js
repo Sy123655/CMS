@@ -6,7 +6,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const User = require('../models/UserModel').User;
-const Manager = require('../models/ManagerModel').Manager;
 
 
 router.all('/*', (req, res, next) => {
@@ -71,7 +70,6 @@ router.route('/login')
     .post(
 
     passport.authenticate('local', {
-    successRedirect: '/user',
     failureRedirect: '/login',
     failureFlash: true,
     successFlash: true,
@@ -84,17 +82,7 @@ router.route('/login')
 
 
 
-router.route('/loginmanager')
-.get(defaultController.loginGetManager)
-.post(defaultController.loginPostManager);
 
-router.route('/loginadmin')
-.get(defaultController.loginGetAdmin)
-.post(defaultController.loginPostAdmin);
-
-router.route('/logincoordinator')
-.get(defaultController.loginGetCoordinator)
-.post(defaultController.loginPostCoordinator);
 
 // noinspection JSCheckFunctionSignatures
 

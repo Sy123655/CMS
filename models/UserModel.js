@@ -22,6 +22,11 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        enum:['0','1','2','3'],
+        default: '3'
+    }
 
 });
 

@@ -3,13 +3,11 @@ const Category = require('../models/CategoryModel').Category;
 const Upload = require('../models/UploadModel').Upload;
 const bcrypt = require('bcryptjs');
 const User = require('../models/UserModel').User;
-const Manager = require('../models/ManagerModel').Manager;
-const Admin = require('../models/AdminModel').Admin;
-const Coordinator = require('../models/CoordinatorModel').Coordinator;
-
-
 const { isEmpty } = require('../config/customFunctions');
-
+const ADMIN = 0;
+const MANAGER = 1;
+const COORDINATOR = 2;
+const USER = 3;
 module.exports = {
 
     index: async(req, res) => {
@@ -26,7 +24,19 @@ module.exports = {
 
 
     loginPost: (req, res) => {
-
+        const user = req.user;
+        if(user.role == 0){
+            res.redirect('/admin')
+        }
+        if(user.role == 1){
+            res.redirect('/manager')
+        }
+        if(user.role == 2){
+            res.redirect('/coordinator')
+        }
+        if(user.role == 3){
+            res.redirect('/user')
+        }
     },
 
     /* REGISTER ROUTES*/
@@ -82,348 +92,7 @@ module.exports = {
             });
         }
     },
-    /* LOGIN ROUTES */
-    loginGetManager: (req, res) => {
-        res.render('default/loginmanager', { message: req.flash('error') });
-    },
 
-
-    loginPostManager: (req, res, next) => {
-            var email = req.body.email
-            var password = req.body.password
-            // var password = req.body.password
-            Manager.findOne({
-                email:email 
-            })
-            .then(user => {
-        
-                bcrypt.compare(password, user.password, (err, passwordMatched) => {
-                    if (err) {
-                        return err;
-                    }
-                    if(user){
-                        res.redirect('/manager');
-                            
-                        }else{
-                            res.status(400).json('dang nhap that bai')
-                        }
-                });
-        
-            },
-        
-            )},
-
-
-    /* REGISTER ROUTES*/
-
-    // registerGetManager: (req, res) => {
-    //     res.render('default/registermanager');
-    // },
-
-    // registerPostManager: (req, res) => {
-    //     let errors = [];
-
-    //     if (!req.body.firstName) {
-    //         errors.push({ message: 'First name is mandatory' });
-    //     }
-    //     if (!req.body.lastName) {
-    //         errors.push({ message: 'Last name is mandatory' });
-    //     }
-    //     if (!req.body.email) {
-    //         errors.push({ message: 'Email field is mandatory' });
-    //     }
-    //     if (!req.body.password || !req.body.passwordConfirm) {
-    //         errors.push({ message: 'Password field is mandatory' });
-    //     }
-    //     if (req.body.password !== req.body.passwordConfirm) {
-    //         errors.push({ message: 'Passwords do not match' });
-    //     }
-
-    //     if (errors.length > 0) {
-    //         res.render('default/registermanager', {
-    //             errors: errors,
-    //             firstName: req.body.firstName,
-    //             lastName: req.body.lastName,
-    //             email: req.body.email
-    //         });
-    //     } else {
-    //         Manager.findOne({ email: req.body.email }).then(manager => {
-    //             if (manager) {
-    //                 req.flash('error-message', 'Email already exists, try to login.');
-    //                 res.redirect('/loginmanager');
-    //             } else {
-    //                 const newManager = new Manager(req.body);
-
-    //                 bcrypt.genSalt(10, (err, salt) => {
-    //                     bcrypt.hash(newManager.password, salt, (err, hash) => {
-    //                         newManager.password = hash;
-    //                         newManager.save().then(manager => {
-    //                             req.flash('success-message', 'You are now registered');
-    //                             res.redirect('/loginmanager');
-    //                         });
-    //                     });
-    //                 });
-    //             }
-    //         });
-    //     }
-    // },
-
-        /* LOGIN Coordinator ROUTES */
-        loginGetCoordinator: (req, res) => {
-            res.render('default/logincoordinator', { message: req.flash('error') });
-        },
-    
-    
-        loginPostCoordinator: (req, res, next) => {
-                var email = req.body.email
-                var password = req.body.password
-                // var password = req.body.password
-                Coordinator.findOne({
-                    email:email 
-                })
-                .then(user => {
-            
-                    bcrypt.compare(password, user.password, (err, passwordMatched) => {
-                        if (err) {
-                            return err;
-                        }
-                        if(user){
-                            res.redirect('/coordinator');
-                                
-                            }else{
-                                res.status(400).json('dang nhap that bai')
-                            }
-                    });
-            
-                },
-            
-                )},
-    
-    
-        /* REGISTER ROUTES*/
-    
-        // registerGetCoordinator: (req, res) => {
-        //     res.render('default/registercoordinator');
-        // },
-    
-        // registerPostCoordinator: (req, res) => {
-        //     let errors = [];
-    
-        //     if (!req.body.firstName) {
-        //         errors.push({ message: 'First name is mandatory' });
-        //     }
-        //     if (!req.body.lastName) {
-        //         errors.push({ message: 'Last name is mandatory' });
-        //     }
-        //     if (!req.body.email) {
-        //         errors.push({ message: 'Email field is mandatory' });
-        //     }
-        //     if (!req.body.password || !req.body.passwordConfirm) {
-        //         errors.push({ message: 'Password field is mandatory' });
-        //     }
-        //     if (req.body.password !== req.body.passwordConfirm) {
-        //         errors.push({ message: 'Passwords do not match' });
-        //     }
-    
-        //     if (errors.length > 0) {
-        //         res.render('default/registercoordinator', {
-        //             errors: errors,
-        //             firstName: req.body.firstName,
-        //             lastName: req.body.lastName,
-        //             email: req.body.email
-        //         });
-        //     } else {
-        //         Coordinator.findOne({ email: req.body.email }).then(coordinator => {
-        //             if (coordinator) {
-        //                 req.flash('error-message', 'Email already exists, try to login.');
-        //                 res.redirect('/logincoordinator');
-        //             } else {
-        //                 const newCoordinator = new Coordinator(req.body);
-    
-        //                 bcrypt.genSalt(10, (err, salt) => {
-        //                     bcrypt.hash(newCoordinator.password, salt, (err, hash) => {
-        //                         newCoordinator.password = hash;
-        //                         newCoordinator.save().then(coordinator => {
-        //                             req.flash('success-message', 'You are now registered');
-        //                             res.redirect('/logincoordinator');
-        //                         });
-        //                     });
-        //                 });
-        //             }
-        //         });
-        //     }
-        // },
-
-            /* LOGIN Coordinator ROUTES */
-        loginGetCoordinator: (req, res) => {
-            res.render('default/logincoordinator', { message: req.flash('error') });
-        },
-    
-    
-        loginPostCoordinator: (req, res, next) => {
-                var email = req.body.email
-                var password = req.body.password
-                // var password = req.body.password
-                Coordinator.findOne({
-                    email:email 
-                })
-                .then(user => {
-            
-                    bcrypt.compare(password, user.password, (err, passwordMatched) => {
-                        if (err) {
-                            return err;
-                        }
-                        if(user){
-                            res.redirect('/coordinator');
-                                
-                            }else{
-                                res.status(400).json('dang nhap that bai')
-                            }
-                    });
-            
-                },
-            
-                )},
-    
-    
-        /* REGISTER ROUTES*/
-    
-        // registerGetCoordinator: (req, res) => {
-        //     res.render('default/registercoordinator');
-        // },
-    
-        // registerPostCoordinator: (req, res) => {
-        //     let errors = [];
-    
-        //     if (!req.body.firstName) {
-        //         errors.push({ message: 'First name is mandatory' });
-        //     }
-        //     if (!req.body.lastName) {
-        //         errors.push({ message: 'Last name is mandatory' });
-        //     }
-        //     if (!req.body.email) {
-        //         errors.push({ message: 'Email field is mandatory' });
-        //     }
-        //     if (!req.body.password || !req.body.passwordConfirm) {
-        //         errors.push({ message: 'Password field is mandatory' });
-        //     }
-        //     if (req.body.password !== req.body.passwordConfirm) {
-        //         errors.push({ message: 'Passwords do not match' });
-        //     }
-    
-        //     if (errors.length > 0) {
-        //         res.render('default/registercoordinator', {
-        //             errors: errors,
-        //             firstName: req.body.firstName,
-        //             lastName: req.body.lastName,
-        //             email: req.body.email
-        //         });
-        //     } else {
-        //         Coordinator.findOne({ email: req.body.email }).then(coordinator => {
-        //             if (coordinator) {
-        //                 req.flash('error-message', 'Email already exists, try to login.');
-        //                 res.redirect('/logincoordinator');
-        //             } else {
-        //                 const newCoordinator = new Coordinator(req.body);
-    
-        //                 bcrypt.genSalt(10, (err, salt) => {
-        //                     bcrypt.hash(newCoordinator.password, salt, (err, hash) => {
-        //                         newCoordinator.password = hash;
-        //                         newCoordinator.save().then(coordinator => {
-        //                             req.flash('success-message', 'You are now registered');
-        //                             res.redirect('/logincoordinator');
-        //                         });
-        //                     });
-        //                 });
-        //             }
-        //         });
-        //     }
-        // },
-        /* LOGIN Admin ROUTES */
-        loginGetAdmin: (req, res) => {
-            res.render('default/loginadmin', { message: req.flash('error') });
-        },
-    
-    
-        loginPostAdmin: (req, res, next) => {
-                var email = req.body.email
-                var password = req.body.password
-                // var password = req.body.password
-                Admin.findOne({
-                    email:email 
-                })
-                .then(user => {
-            
-                    bcrypt.compare(password, user.password, (err, passwordMatched) => {
-                        if (err) {
-                            return err;
-                        }
-                        if(user){
-                            res.redirect('/admin');
-                                
-                            }else{
-                                res.status(400).json('dang nhap that bai')
-                            }
-                    });
-            
-                },
-            
-                )},
-    
-    
-        /* REGISTER ROUTES*/
-    
-        // registerGetAdmin: (req, res) => {
-        //     res.render('default/registeradmin');
-        // },
-    
-        // registerPostAdmin: (req, res) => {
-        //     let errors = [];
-    
-        //     if (!req.body.firstName) {
-        //         errors.push({ message: 'First name is mandatory' });
-        //     }
-        //     if (!req.body.lastName) {
-        //         errors.push({ message: 'Last name is mandatory' });
-        //     }
-        //     if (!req.body.email) {
-        //         errors.push({ message: 'Email field is mandatory' });
-        //     }
-        //     if (!req.body.password || !req.body.passwordConfirm) {
-        //         errors.push({ message: 'Password field is mandatory' });
-        //     }
-        //     if (req.body.password !== req.body.passwordConfirm) {
-        //         errors.push({ message: 'Passwords do not match' });
-        //     }
-    
-        //     if (errors.length > 0) {
-        //         res.render('default/registeradmin', {
-        //             errors: errors,
-        //             firstName: req.body.firstName,
-        //             lastName: req.body.lastName,
-        //             email: req.body.email
-        //         });
-        //     } else {
-        //         Admin.findOne({ email: req.body.email }).then(admin => {
-        //             if (admin) {
-        //                 req.flash('error-message', 'Email already exists, try to login.');
-        //                 res.redirect('/loginadmin');
-        //             } else {
-        //                 const newAdmin = new Admin(req.body);
-    
-        //                 bcrypt.genSalt(10, (err, salt) => {
-        //                     bcrypt.hash(newAdmin.password, salt, (err, hash) => {
-        //                         newAdmin.password = hash;
-        //                         newAdmin.save().then(admin => {
-        //                             req.flash('success-message', 'You are now registered');
-        //                             res.redirect('/loginadmin');
-        //                         });
-        //                     });
-        //                 });
-        //             }
-        //         });
-        //     }
-        // },        
 
 
     getSinglePost: (req, res) => {
@@ -435,7 +104,14 @@ module.exports = {
                 if (!post) {
                     res.status(404).json({ message: 'No Post Found' });
                 } else {
-                    res.render('default/singlePost', { post: post, uploads: post.uploads });
+                    const today = new Date().getTime();
+                    const deadlineTimeTemp = post.deadlinelast;
+                    const deadlineTimeTemp1 = post.deadlinefirst;
+                    const deadlineTime = new Date(deadlineTimeTemp).getTime();
+                    const deadlineTime1 = new Date(deadlineTimeTemp1).getTime();
+                    const isPassDeadline = deadlineTime > today;
+                    const isPassDeadline1 = deadlineTime1 > today;
+                    res.render('default/singlePost', { post: post, uploads: post.uploads, isPassDeadline: isPassDeadline, isPassDeadline1: isPassDeadline1 });
                 }
             })
     },

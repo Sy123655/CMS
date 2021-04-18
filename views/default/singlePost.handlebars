@@ -140,11 +140,14 @@
                             <input type="hidden" name="id" value="{{post._id}}">
                         </div>
 
-                        {{!-- {{#if post.[deadline] '<' today}} --}}
+                        {{#if isPassDeadline}}
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        {{!-- {{else}}
+                        {{else}}
                         <a>OUT of TIME</a>
-                        {{/if}} --}}
+                        {{/if}}
+                        {{#if isPassDeadline1}}
+                        <a>Past the deadline</a>
+                        {{/if}}
                     </form>
                 </div>
             </div>
