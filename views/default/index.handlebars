@@ -1,153 +1,73 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>CMS</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="/publics/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="/publics/css/sb-admin-2.min.css" rel="stylesheet">
-
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simple House Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
+	<link href="/publics/css1/templatemo-style.css" rel="stylesheet" />
 </head>
+<!--
 
-<body id="page-top">
+Simple House
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
+https://templatemo.com/tm-539-simple-house
 
-        <!-- Sidebar -->
-        
+-->
+<body> 
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content" >
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="background-color:aqua!important;">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <h1>CMS</h1>
-                    </form>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-
-
-                        <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
+	<div class="container">
+	<!-- Top box -->
+		<!-- Logo & Site Name -->
+		<div class="placeholder">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="/publics/img1/cms.jpg">
+				<div class="tm-header">
+					<div class="row tm-header-inner">
+						<div class="col-md-6 col-12">
+							<img src="/publics/img1/simple-house-logo.png" alt="Logo" class="tm-site-logo" /> 
+							<div class="tm-site-text-box">
+								<h1 class="tm-site-title">CMS </h1>
+								<h6 class="tm-site-description">Welcome to CMS</h6>	
+							</div>
+						</div>
+						<nav class="col-md-6 col-12 tm-nav">
+							<ul class="tm-nav-ul">
                 {{#if user}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user">User</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
-                    </li>
-                {{!-- {{#if user.role == 1}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/manager">Manager</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
-                    </li>
-                {{#if user.role == 0}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
-                    </li>
-                {{#if user.role == 2}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/coordinator">Coordinator</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
-                    </li> --}}
+                <li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
+                <li class="tm-nav-li"><a href="/user" class="tm-nav-link active">User</a></li>
+                <li class="tm-nav-li"><a href="/logout" class="tm-nav-link active">Logout</a></li>
 
                 {{else}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
+                <li class="tm-nav-li"><a href="/login" class="tm-nav-link">Login</a></li>
+				<li class="tm-nav-li"><a href="/register" class="tm-nav-link">Register</a></li>
 
                 {{/if}}
-                    </li>
+							</ul>
+						</nav>	
+					</div>
+				</div>
+			</div>
+		</div>
 
-                    </ul>
+		<main>
+			<header class="row tm-welcome-section">
+				<h2 class="col-12 text-center tm-section-title">Welcome to CMS</h2>
+				<p class="col-12 text-center">Success is nothing more than a few simple disciplines, practiced every day; 
+                    while failure is simply a few errors in judgment, repeated every day. It is the accumulative weight 
+                    of our disciplines and our judgments that leads us to either fortune or failure.</p>
+			</header>
+	
 
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                       <div class="row">
-
-    <!-- Blog Entries Column -->
-    <div class="col-md-8">
-
-        <h1 class="my-4">Page Heading
-            <small>Secondary Text</small>
-        </h1>
-
-        <!-- Blog Post -->
-        {{#each posts}}
+			<!-- Gallery -->
+			<div class="row tm-gallery">
+                    {{#each posts}}
 
 
             <div class="card mb-4">
-                <img class="card-img-top" src="https://placeimg.com/750/300/tech" alt="Card image cap">
+                <img class="card-img-top" src="/publics/img1/cms.png" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">{{title}}</h2>
                     <p class="card-text">{{description}}</p>
@@ -160,85 +80,31 @@
             </div>
 
         {{/each}}
+				</div> <!-- gallery page 1 -->
+			</div>	
+		</main>
 
-    </div>
-    <!-- Sidebar Widgets Column -->
-    <div class="col-md-4">
-
-        
-
-        <!-- Categories Widget -->
-        <div class="card my-4">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
-                            {{#each categories}}
-                                <li>
-                                    <a href="#">{{title}}</a>
-                                </li>
-                            {{/each}}
-
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Side Widget -->
-      
-
-    </div>
-
-</div> 
-                    </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="/publics/vendor/jquery/jquery.min.js"></script>
-    <script src="/publics/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/publics/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/publics/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="/publics/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/publics/js/demo/chart-area-demo.js"></script>
-    <script src="/publics/js/demo/chart-pie-demo.js"></script>
-
+		<footer class="tm-footer text-center">
+			<p>Copyright &copy; 2021 CMS
+            
+            | Design: <a rel="nofollow">SY CAP</a></p>
+		</footer>
+	</div>
+	<script src="/publics/js1/jquery.min.js"></script>
+	<script src="/publics/js1/parallax.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
+				
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+	</script>
 </body>
-
 </html>
-
