@@ -21,13 +21,18 @@ router.route('/')
 router.route('/upload')
     .get(coordinatorController.getUploads);
 
+router.route('/uploads/edit/:id')
+    .get(coordinatorController.getEditUploadPage)
+    .put(coordinatorController.submitEditUploadPage);
+
+
+router.route('/uploads/edit1/:id')
+    .get(coordinatorController.getEditCommentPage)
+    .put(coordinatorController.submitEditCommentPage);
 
 /*sadasdas*/
 
 
-    
-router.route('/upload/:id')
-    .get(coordinatorController.getSingleUpload);
 
 module.exports = router;
 

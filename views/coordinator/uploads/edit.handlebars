@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Add Mark</h1>
+
+    <div class="row p-4">
+        <div class="col-md-10">
+            <form action="/coordinator/uploads/edit/{{upload._id}}?newMethod=PUT" method="post">
+
+                <div class="form-group">
+                    <label for="title">Mark</label>
+                    <input type="text" class="form-control" name="mark" id="mark" placeholder="Enter The Mark" value={{upload.mark}}>
+                </div>
+
+                <button class="btn btn-outline-warning btn-lg" type="submit">Mark</button>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>

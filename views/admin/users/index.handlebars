@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="alert alert-secondary text-center">
+        <h1>ALL Users</h1>    
+    </div>
+        
+    <table class="table table-bordered">
+        <thead class="bg-dark text-center">
+        <tr class="text-white">          
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {{#each users}}
+            <tr>               
+                <td>{{firstName}}</td>
+                <td>{{lastName}}</td>
+                <td>{{email}}</td>
+                <td>{{role}}</td>
+                <td class="d-flex">
+                    <a href="/admin/users/edit/{{_id}}" class="btn btn-sm btn-warning mr-2">Edit Role</a>
+
+                    <form action="/admin/users/delete/{{id}}?newMethod=DELETE" method="post">
+                        <button class="btn btn-sm btn-danger" type="submit">Delete User</button>
+                    </form>
+                    
+                    
+                </td>
+            </tr>    
+        {{/each}}
+        
+        </tbody>
+    </table>
+    
+    
+</div>

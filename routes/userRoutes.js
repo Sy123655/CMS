@@ -16,6 +16,12 @@ router.all('/*', isUserAuthenticated, (req, res, next) => {
 router.route('/')
     .get(userController.index);
 
+router.route('/upload')
+    .get(userController.getUploads1);
+
+    router.route('/uploads/edit2/:id')
+    .get(userController.getEditComment1Page)
+    .put(userController.submitEditComment1Page);
 
 /* VARIOUS ADMIN POST ENDPOINTS */
 

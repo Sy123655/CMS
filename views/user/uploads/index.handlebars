@@ -4,26 +4,32 @@
             <table  class="table table-bordered text-center text-white">
                 <thead class="bg-dark">
                 <tr>
-                    <th>Id</th>
                     <th>Publisher</th>
+                    <th>Email</th>
                     <th>Date</th>
                     <th>File</th>
-                    <th>Comment</th>
-                    <th>Comment here</th>
+                    <th>Mark</th>
+                    <th>Coordinator comment</th>
+                    <th>Student comment</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
 
                 <tbody class="text-dark">
                 {{#each uploads}}
                     <tr>
-                        <td>{{id}}</td>
                         <td style="width: auto;">{{user.firstName}} {{user.lastName}}</td>
+                        <td>{{user.email}}</td>
                         <td>{{date}}</td>
-                        <td>{{file}}<form action="{{file}}">
-                        <input type="submit" value="download">
-                        </form></td>
+                        <td>{{file}}</td>
+                        <td>{{mark}}</td>
+                        <td>{{comment1}}</td>
+                        <td>{{comment2}}</td>
+                        <td>
+                        <a href="/user/uploads/edit2/{{_id}}" class="btn btn-sm btn-warning mr-2">Comment</a>                  
+                        </td>
                     </tr>
-
+                    
                 {{/each}}
                 </tbody>
                 

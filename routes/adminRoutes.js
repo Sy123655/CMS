@@ -22,7 +22,8 @@ router.route('/')
 router.route('/posts')
     .get(adminController.getPosts);
 
-
+    router.route('/users')
+    .get(adminController.getUsers);
 
 router.route('/posts/create')
     .get(adminController.getCreatePostPage)
@@ -32,6 +33,14 @@ router.route('/posts/create')
 router.route('/posts/edit/:id')
     .get(adminController.getEditPostPage)
     .put(adminController.submitEditPostPage);
+
+
+router.route('/users/edit/:id')
+    .get(adminController.getEditUserPage)
+    .put(adminController.submitEditUserPage);
+
+router.route('/users/delete/:id')
+    .delete(adminController.deleteUser);
 
 
 router.route('/posts/delete/:id')

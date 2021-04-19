@@ -37,7 +37,6 @@ https://templatemo.com/tm-539-simple-house
 							<ul class="tm-nav-ul">
                 {{#if user}}
                 <li class="tm-nav-li"><a href="/" class="tm-nav-link active">Home</a></li>
-                <li class="tm-nav-li"><a href="/user" class="tm-nav-link active">User</a></li>
                 <li class="tm-nav-li"><a href="/logout" class="tm-nav-link active">Logout</a></li>
 
                 {{else}}
@@ -86,15 +85,20 @@ https://templatemo.com/tm-539-simple-house
                             accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                             <input type="hidden" name="id" value="{{post._id}}">
                         </div>
-
+						
                         {{#if isPassDeadline}}
+						{{#if user}}
                         <button type="submit" class="btn btn-primary">Submit</button>
+                        {{/if}}
+                        
                         {{else}}
                         <a>OUT of TIME</a>
                         {{/if}}
                         {{#if isPassDeadline1}}
                         <a>Past the deadline</a>
                         {{/if}}
+
+						
                     </form>
                 </div>    
             

@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Edit Comment</h1>
+
+    <div class="row p-4">
+        <div class="col-md-10">
+            <form action="/user/uploads/edit2/{{upload._id}}?newMethod=PUT" method="post">
+
+                <div class="form-group">
+                    <label for="title">Comment</label>
+                    <input type="text" class="form-control" name="comment2" id="comment2" placeholder="Enter The Comment" value={{upload.comment2}}>
+                </div>
+
+                <button class="btn btn-outline-warning btn-lg" type="submit">Comment</button>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>

@@ -11,7 +11,13 @@ module.exports = {
 
     },
 
-
+    getUploads: (req, res) => {
+        Upload.find()
+            .populate('user')
+            .then(uploads => {
+                res.render('layouts/manager', {uploads: uploads});
+            })
+    },
     /* ZIP ALL FILES */
     
     getzip: (req, res, next) => {

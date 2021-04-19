@@ -21,7 +21,20 @@ const UploadSchema = new Schema({
     comment: {
         type: Schema.Types.ObjectId,
         ref: 'comment'
+    },
+    comment1: {
+        type: String,
+        default: true,
+    },
+    comment2: {
+        type: String,
+        default: true,
+    },
+    mark: {
+        type: String,
+        default: true,
     }
+    
     
 
 

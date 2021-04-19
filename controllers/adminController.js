@@ -2,7 +2,7 @@ const Post = require('../models/PostModel').Post;
 const Category = require('../models/CategoryModel').Category;
 const Upload = require('../models/UploadModel').Upload;
 const {isEmpty} = require('../config/customFunctions');
-
+const User = require('../models/UserModel').User;
 
 module.exports = {
 
@@ -22,6 +22,7 @@ module.exports = {
                 res.render('admin/posts/index', {posts: posts});
             });
     },
+
 
 
     getCreatePostPage: (req, res) => {
@@ -86,6 +87,46 @@ module.exports = {
                 res.redirect('/admin/posts');
             });
     },
+
+//Manager USer
+
+getUsers: (req, res) => {
+    User.find()
+        .then(users => {
+            res.render('admin/users/index', {users: users});
+        });
+},
+
+getEditUserPage: (req, res) => {
+    const id = req.params.id;
+    User.findById(id)
+        .then(user => {
+        res.render('admin/users/edit', {user: user});
+        }
+        );
+},
+
+submitEditUserPage: (req, res) => {
+    const id = req.params.id;
+    User.findById(id)
+        .then(user => {
+            user.role = req.body.role;
+
+            user.save().then(updateUser => {
+                req.flash('success-message', `The User ${updateUser.role} has been updated.`);
+                res.redirect('/admin/users');
+            });
+        });
+},
+
+deleteUser: (req, res) => {
+
+    User.findByIdAndDelete(req.params.id)
+        .then(deletedUser => {
+            req.flash('success-message', `The post ${deletedUser.email} has been deleted.`);
+            res.redirect('/admin/users');
+        });
+},
 
 
     /* ALL CATEGORY METHODS*/

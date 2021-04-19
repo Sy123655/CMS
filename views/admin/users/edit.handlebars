@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Edit Role</h1>
+
+    <div class="row p-4">
+        <div class="col-md-10">
+            <form action="/admin/users/edit/{{user._id}}?newMethod=PUT" method="post">
+
+                <div class="form-group">
+                    <label for="title">Role</label>
+                    <input type="text" class="form-control" name="role" id="role" placeholder="Enter The Role" value={{user.role}}>
+                </div>
+
+                <button class="btn btn-outline-warning btn-lg" type="submit">Update User</button>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>

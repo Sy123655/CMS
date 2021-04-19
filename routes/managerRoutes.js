@@ -21,6 +21,8 @@ router.route('/')
 router.route('/zip')
     .get(managerController.getzip);
 
+router.route('/upload')
+    .get(managerController.getUploads);
 
 module.exports = router;
 

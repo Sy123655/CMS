@@ -76,31 +76,11 @@ router.route('/login')
     session: true}),
         defaultController.loginPost);
 
-    
-
-
-
-
-
-
-
-// noinspection JSCheckFunctionSignatures
 
 router.route('/register')
     .get(defaultController.registerGet)
     .post(defaultController.registerPost);
 
-// router.route('/registermanager')
-//     .get(defaultController.registerGetManager)
-//     .post(defaultController.registerPostManager);
-
-// router.route('/registeradmin')
-//     .get(defaultController.registerGetAdmin)
-//     .post(defaultController.registerPostAdmin);
-
-//     router.route('/registercoordinator')
-//     .get(defaultController.registerGetCoordinator)
-//     .post(defaultController.registerPostCoordinator);
 
 
 router.route('/post/:id')
