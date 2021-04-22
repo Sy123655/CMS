@@ -121,7 +121,8 @@ module.exports = {
     //upload file 
     
     submitUpload: (req, res) => {
-        if (req.user.role == 3) {
+        if (req.user) {
+            if(user.role == 3){
             Post.findById(req.body.id).then(post => {
                 let filename = '';
 
@@ -148,7 +149,7 @@ module.exports = {
                 });
 
 
-            })
+            })}
         } else {
             req.flash('error-message', 'Just User submit!');
             res.redirect('/');
