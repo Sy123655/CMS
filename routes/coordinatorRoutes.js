@@ -6,8 +6,11 @@ const {isUserAuthenticated} = require("../config/customFunctions");
 
 router.all('/*', isUserAuthenticated, (req, res, next) => {
 
-    req.app.locals.layout = 'coordinator';
-
+    
+    const user = req.user;
+    if(user.role == 2){
+        req.app.locals.layout = 'coordinator';
+}
     next();
 });
 

@@ -12,7 +12,8 @@ module.exports = {
     },
 
     getUploads1: (req, res) => {
-        Upload.find()
+        const id = req.params.id;
+        Upload.findById(id)
             .populate('user')
             .then(uploads => {
                 res.render('user/uploads/index', {uploads: uploads});

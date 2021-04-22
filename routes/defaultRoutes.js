@@ -9,9 +9,7 @@ const User = require('../models/UserModel').User;
 
 
 router.all('/*', (req, res, next) => {
-
     req.app.locals.layout = 'default';
-
     next();
 });
 

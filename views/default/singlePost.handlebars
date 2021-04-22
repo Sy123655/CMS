@@ -85,11 +85,11 @@ https://templatemo.com/tm-539-simple-house
                             accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                             <input type="hidden" name="id" value="{{post._id}}">
                         </div>
-						
-                        {{#if isPassDeadline}}
 						{{#if user}}
+                        {{#if isPassDeadline}}
+						
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        {{/if}}
+                        
                         
                         {{else}}
                         <a>OUT of TIME</a>
@@ -97,13 +97,12 @@ https://templatemo.com/tm-539-simple-house
                         {{#if isPassDeadline1}}
                         <a>Past the deadline</a>
                         {{/if}}
-
-						
+						{{/if}}
                     </form>
                 </div>    
             
 				
-			</div>	
+
 		</main>
 
 		<footer class="tm-footer text-center">

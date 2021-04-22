@@ -4,23 +4,23 @@ const Upload = require('../models/UploadModel').Upload;
 const bcrypt = require('bcryptjs');
 const User = require('../models/UserModel').User;
 const { isEmpty } = require('../config/customFunctions');
-const ADMIN = 0;
-const MANAGER = 1;
-const COORDINATOR = 2;
-const USER = 3;
+
+
+
 module.exports = {
 
     index: async(req, res) => {
-
         const posts = await Post.find();
         const categories = await Category.find();
-        res.render('default/index', { posts: posts, categories: categories });
+        res.render('default/index', { posts: posts, categories: categories});
     },
 
     /* LOGIN ROUTES */
     loginGet: (req, res) => {
         res.render('default/login', { message: req.flash('error') });
     },
+
+
 
 
     loginPost: (req, res) => {
@@ -110,8 +110,14 @@ module.exports = {
                     const deadlineTime = new Date(deadlineTimeTemp).getTime();
                     const deadlineTime1 = new Date(deadlineTimeTemp1).getTime();
                     const isPassDeadline = deadlineTime > today;
-                    const isPassDeadline1 = deadlineTime1 > today;
-                    res.render('default/singlePost', { post: post, uploads: post.uploads, isPassDeadline: isPassDeadline, isPassDeadline1: isPassDeadline1 });
+                    const isPassDeadline1 = deadlineTime1 < today;
+
+
+                    res.render('default/singlePost', {  post: post, 
+                                                        uploads: post.uploads, 
+                                                        isPassDeadline: isPassDeadline, 
+                                                        isPassDeadline1: isPassDeadline1,
+                                                        });
                 }
             })
     },
@@ -121,7 +127,8 @@ module.exports = {
     //upload file 
     
     submitUpload: (req, res) => {
-        if (req.user) {
+        if (req) {
+            const user = req.user;
             if(user.role == 3){
             Post.findById(req.body.id).then(post => {
                 let filename = '';

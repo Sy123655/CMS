@@ -5,12 +5,11 @@ const Upload = require('../models/UploadModel').Upload;
 
 
 module.exports = {
-
+    
     index: (req, res) => {
         res.render('manager/index');
-
     },
-
+    
     getUploads: (req, res) => {
         Upload.find()
             .populate('user')
