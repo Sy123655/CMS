@@ -2,7 +2,7 @@ const Post = require('../models/PostModel').Post;
 const Category = require('../models/CategoryModel').Category;
 const Upload = require('../models/UploadModel').Upload;
 const {isEmpty} = require('../config/customFunctions');
-
+const User = require('../models/UserModel').User;
 
 module.exports = {
 
@@ -12,8 +12,7 @@ module.exports = {
     },
 
     getUploads1: (req, res) => {
-        const id = req.params.id;
-        Upload.findById(id)
+        Upload.find()
             .populate('user')
             .then(uploads => {
                 res.render('user/uploads/index', {uploads: uploads});
